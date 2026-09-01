@@ -15,6 +15,7 @@ import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppCalendarRouteImport } from './routes/app/calendar'
 import { Route as AppHelpRouteImport } from './routes/app/help'
 import { Route as AppQuestionnairesRouteImport } from './routes/app/questionnaires'
+import { Route as AppReportsRouteImport } from './routes/app/reports'
 import { Route as AppUpdatesRouteImport } from './routes/app/updates'
 import { Route as AppUsersRouteImport } from './routes/app/users'
 
@@ -48,6 +49,11 @@ const AppQuestionnairesRoute = AppQuestionnairesRouteImport.update({
   path: '/questionnaires',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppUpdatesRoute = AppUpdatesRouteImport.update({
   id: '/updates',
   path: '/updates',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/app/calendar': typeof AppCalendarRoute
   '/app/help': typeof AppHelpRoute
   '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/updates': typeof AppUpdatesRoute
   '/app/users': typeof AppUsersRoute
   '/app/': typeof AppIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/app/calendar': typeof AppCalendarRoute
   '/app/help': typeof AppHelpRoute
   '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/updates': typeof AppUpdatesRoute
   '/app/users': typeof AppUsersRoute
   '/app': typeof AppIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/app/calendar': typeof AppCalendarRoute
   '/app/help': typeof AppHelpRoute
   '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/updates': typeof AppUpdatesRoute
   '/app/users': typeof AppUsersRoute
   '/app/': typeof AppIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/app/calendar'
     | '/app/help'
     | '/app/questionnaires'
+    | '/app/reports'
     | '/app/updates'
     | '/app/users'
     | '/app/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/app/calendar'
     | '/app/help'
     | '/app/questionnaires'
+    | '/app/reports'
     | '/app/updates'
     | '/app/users'
     | '/app'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/app/calendar'
     | '/app/help'
     | '/app/questionnaires'
+    | '/app/reports'
     | '/app/updates'
     | '/app/users'
     | '/app/'
@@ -170,6 +182,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppQuestionnairesRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/reports': {
+      id: '/app/reports'
+      path: '/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/updates': {
       id: '/app/updates'
       path: '/updates'
@@ -191,6 +210,7 @@ interface AppRouteRouteChildren {
   AppCalendarRoute: typeof AppCalendarRoute
   AppHelpRoute: typeof AppHelpRoute
   AppQuestionnairesRoute: typeof AppQuestionnairesRoute
+  AppReportsRoute: typeof AppReportsRoute
   AppUpdatesRoute: typeof AppUpdatesRoute
   AppUsersRoute: typeof AppUsersRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -200,6 +220,7 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppCalendarRoute: AppCalendarRoute,
   AppHelpRoute: AppHelpRoute,
   AppQuestionnairesRoute: AppQuestionnairesRoute,
+  AppReportsRoute: AppReportsRoute,
   AppUpdatesRoute: AppUpdatesRoute,
   AppUsersRoute: AppUsersRoute,
   AppIndexRoute: AppIndexRoute,
