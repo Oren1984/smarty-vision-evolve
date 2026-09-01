@@ -142,3 +142,291 @@
     color: var(--color-foreground);
   }
 }
+
+
+/* ==========================================================================
+   SMARTY / NTMS design tokens (2028–2030 refresh) — verbatim from the
+   approved proposal catalog, plus Tailwind mapping for the prototype.
+   Themes switch via data-bs-theme="dark" | "high-contrast" on <html>.
+   ========================================================================== */
+
+:root{
+  /* ---- Surfaces & ground ---- */
+  --smarty-bg:            #F8FAFC;
+  --smarty-surface:       #FFFFFF;
+  --smarty-surface-2:     #F1F5F9;
+  --smarty-border:        #E2E8F0;
+  --smarty-border-2:      #CBD5E1;
+
+  /* ---- Ink / text hierarchy ---- */
+  --smarty-ink:           #0F172A;
+  --smarty-ink-2:         #475569;
+  --smarty-ink-3:         #94A3B8;
+
+  /* ---- Brand ---- */
+  --smarty-brand:         #0D6EFD;  /* vibrant blue — primary actions, links, focus */
+  --smarty-brand-ink:     #FFFFFF; /* text/icon color on brand fill */
+  --smarty-brand-soft:    #E8F0FE; /* tinted backgrounds: active nav, badges */
+  --smarty-cyan:          #00BCD4;  /* tech cyan — secondary accent, AI surfaces, charts */
+  --smarty-cyan-soft:     #E0F7FA;
+
+  /* ---- Semantic status ---- */
+  --smarty-success:       #059669;
+  --smarty-success-soft:  #DCFCE7;
+  --smarty-warn:          #D97706;
+  --smarty-warn-soft:     #FEF3C7;
+  --smarty-danger:        #E11D48;
+  --smarty-danger-soft:   #FFE4E9;
+  --smarty-info:          #4338CA;
+  --smarty-info-soft:     #E9E7FD;
+
+  /* ---- Elevation ---- */
+  --smarty-shadow-xs:  0 1px 2px rgba(15,23,42,.04);
+  --smarty-shadow-sm:  0 1px 3px rgba(15,23,42,.06), 0 4px 12px -4px rgba(15,23,42,.06);
+  --smarty-shadow-md:  0 8px 24px -8px rgba(15,23,42,.12), 0 2px 6px -2px rgba(15,23,42,.08);
+  --smarty-shadow-glow: 0 0 0 4px rgba(13,110,253,.12); /* focus ring on brand-colored controls */
+
+  /* ---- Radius scale ---- */
+  --smarty-radius-sm:  8px;
+  --smarty-radius-md:  12px;
+  --smarty-radius-lg:  16px;
+  --smarty-radius-xl:  20px;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --smarty-space-1: 4px;
+  --smarty-space-2: 8px;
+  --smarty-space-3: 12px;
+  --smarty-space-4: 16px;
+  --smarty-space-5: 20px;
+  --smarty-space-6: 24px;
+  --smarty-space-8: 32px;
+  --smarty-space-10: 40px;
+
+  /* ---- Typography ---- */
+  --smarty-font-ui:   'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --smarty-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --smarty-text-xs:   11.5px;
+  --smarty-text-sm:   13px;
+  --smarty-text-base: 14.5px;
+  --smarty-text-lg:   17px;
+  --smarty-text-xl:   22px;
+  --smarty-text-2xl:  28px;
+
+  --smarty-leading-tight: 1.2;
+  --smarty-leading-normal: 1.55;
+
+  /* ---- Layout constants ---- */
+  --smarty-sidebar-w:            264px;
+  --smarty-sidebar-w-collapsed:  76px;
+  --smarty-topbar-h:             60px;
+}
+
+/* ============================= DARK THEME =============================
+   Applied when the app sets data-bs-theme="dark" on <html>, matching the
+   convention already shipped in smarty-theme.js. */
+[data-bs-theme="dark"]{
+  --smarty-bg:            #0A0F1C;
+  --smarty-surface:       #111A2C;
+  --smarty-surface-2:     #0D1526;
+  --smarty-border:        #1E2A42;
+  --smarty-border-2:      #2A3A58;
+
+  --smarty-ink:           #E7ECF5;
+  --smarty-ink-2:         #9AAAC2;
+  --smarty-ink-3:         #5E7092;
+
+  --smarty-brand:         #3B8CFF;
+  --smarty-brand-ink:     #04101F;
+  --smarty-brand-soft:    #132A4D;
+  --smarty-cyan:          #22D3EE;
+  --smarty-cyan-soft:     #0B2C33;
+
+  --smarty-success:       #34D399;
+  --smarty-success-soft:  #0C2A20;
+  --smarty-warn:          #FBBF24;
+  --smarty-warn-soft:     #332107;
+  --smarty-danger:        #FB7185;
+  --smarty-danger-soft:   #3A0F19;
+  --smarty-info:          #818CF8;
+  --smarty-info-soft:     #211B4E;
+
+  --smarty-shadow-xs:  0 1px 2px rgba(0,0,0,.3);
+  --smarty-shadow-sm:  0 1px 3px rgba(0,0,0,.4), 0 6px 16px -6px rgba(0,0,0,.5);
+  --smarty-shadow-md:  0 12px 32px -10px rgba(0,0,0,.6);
+  --smarty-shadow-glow: 0 0 0 4px rgba(59,140,255,.22);
+}
+
+/* ========================= HIGH-CONTRAST THEME =========================
+   Solid fills, no soft/tinted badges — WCAG AA/AAA-oriented, per Section 9
+   and Section 13 of the owner summary (no color-only state indication,
+   minimum AA contrast on text and interactive elements in every theme). */
+[data-bs-theme="high-contrast"]{
+  --smarty-bg:            #000000;
+  --smarty-surface:       #000000;
+  --smarty-surface-2:     #0A0A0A;
+  --smarty-border:        #FFFFFF;
+  --smarty-border-2:      #FFFFFF;
+
+  --smarty-ink:           #FFFFFF;
+  --smarty-ink-2:         #F5F5F5;
+  --smarty-ink-3:         #D4D4D4;
+
+  --smarty-brand:         #66B3FF;
+  --smarty-brand-ink:     #000000;
+  --smarty-brand-soft:    #001B3D;
+  --smarty-cyan:          #5CE1E6;
+  --smarty-cyan-soft:     #00272B;
+
+  --smarty-success:       #4ADE80;
+  --smarty-success-soft:  #00220E;
+  --smarty-warn:          #FFD230;
+  --smarty-warn-soft:     #332400;
+  --smarty-danger:        #FF6B81;
+  --smarty-danger-soft:   #330008;
+  --smarty-info:          #A5B4FC;
+  --smarty-info-soft:     #0E0A33;
+
+  --smarty-shadow-xs:  none;
+  --smarty-shadow-sm:  none;
+  --smarty-shadow-md:  none;
+  --smarty-shadow-glow: 0 0 0 3px #66B3FF;
+}
+
+/* =============================================================
+   COMPONENT LAYER — thin, optional. Consumes tokens above only.
+   Existing Bootstrap 5 classes are left in place; these are
+   additive utility classes for the modernized surfaces described
+   in Section 10–11 of the owner summary. Nothing here targets
+   DataTables' own generated DOM or renames any class its JS reads.
+   ============================================================= */
+
+.smarty-card{
+  background: var(--smarty-surface);
+  border: 1px solid var(--smarty-border);
+  border-radius: var(--smarty-radius-lg);
+  box-shadow: var(--smarty-shadow-xs);
+}
+
+.smarty-btn-primary{
+  background: var(--smarty-brand);
+  color: var(--smarty-brand-ink);
+  border-radius: var(--smarty-radius-sm);
+  box-shadow: var(--smarty-shadow-sm);
+  border: 1px solid transparent;
+}
+
+.smarty-btn-secondary{
+  background: var(--smarty-surface);
+  color: var(--smarty-ink);
+  border: 1px solid var(--smarty-border-2);
+  border-radius: var(--smarty-radius-sm);
+}
+
+.smarty-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--smarty-text-xs);
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.smarty-pill--success{ background: var(--smarty-success-soft); color: var(--smarty-success); }
+.smarty-pill--warn{    background: var(--smarty-warn-soft);    color: var(--smarty-warn); }
+.smarty-pill--danger{  background: var(--smarty-danger-soft);  color: var(--smarty-danger); }
+.smarty-pill--info{    background: var(--smarty-info-soft);    color: var(--smarty-info); }
+
+/* Focus ring — apply to any interactive element needing a visible,
+   AA-compliant keyboard focus state in every theme (Section 13). */
+.smarty-focusable:focus-visible{
+  outline: 2px solid var(--smarty-brand);
+  outline-offset: 2px;
+  box-shadow: var(--smarty-shadow-glow);
+}
+
+/* DataTables presentation-only restyle (Section 10). Column/sort/filter/
+   export/pagination behavior is untouched — this only restyles the
+   existing generated markup's surfaces. */
+table.dataTable thead th{
+  font-size: var(--smarty-text-xs);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--smarty-ink-3);
+  border-bottom: 1px solid var(--smarty-border);
+}
+table.dataTable tbody td{
+  border-bottom: 1px solid var(--smarty-border);
+  color: var(--smarty-ink);
+}
+table.dataTable tbody tr:hover{
+  background: var(--smarty-surface-2);
+}
+
+
+@theme inline {
+  --color-ground: var(--smarty-bg);
+  --color-surface: var(--smarty-surface);
+  --color-surface-2: var(--smarty-surface-2);
+  --color-line: var(--smarty-border);
+  --color-line-2: var(--smarty-border-2);
+  --color-ink: var(--smarty-ink);
+  --color-ink-2: var(--smarty-ink-2);
+  --color-ink-3: var(--smarty-ink-3);
+  --color-brand: var(--smarty-brand);
+  --color-brand-ink: var(--smarty-brand-ink);
+  --color-brand-soft: var(--smarty-brand-soft);
+  --color-cyan: var(--smarty-cyan);
+  --color-cyan-soft: var(--smarty-cyan-soft);
+  --color-success: var(--smarty-success);
+  --color-success-soft: var(--smarty-success-soft);
+  --color-warn: var(--smarty-warn);
+  --color-warn-soft: var(--smarty-warn-soft);
+  --color-danger: var(--smarty-danger);
+  --color-danger-soft: var(--smarty-danger-soft);
+  --color-info: var(--smarty-info);
+  --color-info-soft: var(--smarty-info-soft);
+  --font-ui: var(--smarty-font-ui);
+  --font-mono: var(--smarty-font-mono);
+  --radius-card: var(--smarty-radius-lg);
+  --shadow-xs: var(--smarty-shadow-xs);
+  --shadow-sm: var(--smarty-shadow-sm);
+  --shadow-md: var(--smarty-shadow-md);
+}
+
+@layer base {
+  html {
+    font-family: var(--smarty-font-ui);
+  }
+  body {
+    background-color: var(--smarty-bg);
+    color: var(--smarty-ink);
+    font-size: var(--smarty-text-base);
+    line-height: var(--smarty-leading-normal);
+  }
+  ::selection {
+    background: var(--smarty-brand-soft);
+  }
+}
+
+@utility metric {
+  font-family: var(--smarty-font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@utility surface-card {
+  background: var(--smarty-surface);
+  border: 1px solid var(--smarty-border);
+  border-radius: var(--smarty-radius-lg);
+  box-shadow: var(--smarty-shadow-xs);
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--smarty-brand);
+    outline-offset: 2px;
+    box-shadow: var(--smarty-shadow-glow);
+  }
+}

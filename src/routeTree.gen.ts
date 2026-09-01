@@ -10,33 +10,132 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteRouteImport } from './routes/app/route'
+import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AppCalendarRouteImport } from './routes/app/calendar'
+import { Route as AppHelpRouteImport } from './routes/app/help'
+import { Route as AppQuestionnairesRouteImport } from './routes/app/questionnaires'
+import { Route as AppReportsRouteImport } from './routes/app/reports'
+import { Route as AppUpdatesRouteImport } from './routes/app/updates'
+import { Route as AppUsersRouteImport } from './routes/app/users'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCalendarRoute = AppCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppHelpRoute = AppHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppQuestionnairesRoute = AppQuestionnairesRouteImport.update({
+  id: '/questionnaires',
+  path: '/questionnaires',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUpdatesRoute = AppUpdatesRouteImport.update({
+  id: '/updates',
+  path: '/updates',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUsersRoute = AppUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
+  '/app/calendar': typeof AppCalendarRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/updates': typeof AppUpdatesRoute
+  '/app/users': typeof AppUsersRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/calendar': typeof AppCalendarRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/updates': typeof AppUpdatesRoute
+  '/app/users': typeof AppUsersRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
+  '/app/calendar': typeof AppCalendarRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/questionnaires': typeof AppQuestionnairesRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/updates': typeof AppUpdatesRoute
+  '/app/users': typeof AppUsersRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/calendar'
+    | '/app/help'
+    | '/app/questionnaires'
+    | '/app/reports'
+    | '/app/updates'
+    | '/app/users'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app/calendar'
+    | '/app/help'
+    | '/app/questionnaires'
+    | '/app/reports'
+    | '/app/updates'
+    | '/app/users'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/calendar'
+    | '/app/help'
+    | '/app/questionnaires'
+    | '/app/reports'
+    | '/app/updates'
+    | '/app/users'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +147,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/calendar': {
+      id: '/app/calendar'
+      path: '/calendar'
+      fullPath: '/app/calendar'
+      preLoaderRoute: typeof AppCalendarRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/help': {
+      id: '/app/help'
+      path: '/help'
+      fullPath: '/app/help'
+      preLoaderRoute: typeof AppHelpRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/questionnaires': {
+      id: '/app/questionnaires'
+      path: '/questionnaires'
+      fullPath: '/app/questionnaires'
+      preLoaderRoute: typeof AppQuestionnairesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/reports': {
+      id: '/app/reports'
+      path: '/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/updates': {
+      id: '/app/updates'
+      path: '/updates'
+      fullPath: '/app/updates'
+      preLoaderRoute: typeof AppUpdatesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/users': {
+      id: '/app/users'
+      path: '/users'
+      fullPath: '/app/users'
+      preLoaderRoute: typeof AppUsersRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
   }
 }
 
+interface AppRouteRouteChildren {
+  AppCalendarRoute: typeof AppCalendarRoute
+  AppHelpRoute: typeof AppHelpRoute
+  AppQuestionnairesRoute: typeof AppQuestionnairesRoute
+  AppReportsRoute: typeof AppReportsRoute
+  AppUpdatesRoute: typeof AppUpdatesRoute
+  AppUsersRoute: typeof AppUsersRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppCalendarRoute: AppCalendarRoute,
+  AppHelpRoute: AppHelpRoute,
+  AppQuestionnairesRoute: AppQuestionnairesRoute,
+  AppReportsRoute: AppReportsRoute,
+  AppUpdatesRoute: AppUpdatesRoute,
+  AppUsersRoute: AppUsersRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
