@@ -66,9 +66,10 @@ export function ConsoleTopbar({ onAssistant }: { onAssistant: () => void }) {
           aria-label={t({ he: "התראות", en: "Notifications" })}
         >
           <Bell className="size-[18px]" />
-          <span className="absolute end-1 top-1 grid size-4 place-items-center rounded-full bg-danger text-[10px] font-bold text-white">
+          <span className="absolute end-1 top-1 grid size-4 place-items-center rounded-full bg-danger text-[10px] font-bold text-brand-ink">
             1
           </span>
+
         </button>
       </div>
     </header>
