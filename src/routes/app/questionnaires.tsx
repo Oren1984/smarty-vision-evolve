@@ -128,7 +128,7 @@ function CreateUser() {
           />
         </Field>
         <Field label={t({ he: "שם משתמש", en: "User Name" })} required>
-          <TextInput placeholder="user@smarty.test" />
+          <TextInput dir="ltr" placeholder="user@smarty.test" />
         </Field>
         <Field
           label={t({ he: "סיסמה", en: "Password" })}
@@ -147,10 +147,10 @@ function CreateUser() {
           <SelectInput options={["עברית (Default)", "English"]} />
         </Field>
         <Field label={t({ he: "טלפון", en: "Phone" })}>
-          <TextInput placeholder="+972 5x-xxx-xxxx" />
+          <TextInput dir="ltr" placeholder="+972 5x-xxx-xxxx" />
         </Field>
         <Field label={t({ he: "דוא״ל", en: "Email" })} required>
-          <TextInput type="email" placeholder="user@company.co.il" />
+          <TextInput dir="ltr" type="email" placeholder="user@company.co.il" />
         </Field>
       </div>
       <FormActions />
